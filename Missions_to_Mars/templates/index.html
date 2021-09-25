@@ -20,61 +20,36 @@
     <div class= "row">
         <div class= "col-md-12">
             <h2>Latest Mars News</h2>
-                <h4>{{}}</h4>
-                    <p>{{}}</p>
+                <h4>{{mars.title}}</h4>
+                    <p>{{mars.content}}</p>
         </div>
     </div>
 
     <div class= "row">
         <div class= "col-md-8">
             <h3>Featured Mars Image</h3>
-            <img src= "{{}}", alt = "Mars Image">
+            <img src= "{{mars.image_url}}", alt = "Mars Image">
         </div>
         <div class= "col-md-4">
             <h3>Mars Facts</h3>
-            <table> {{}}</table>
+            <table> {{mars.facts | safe }}</table>
         </div>
     </div>
-    <!--insert table and format?  -->
     
     <div class= "row">
         <div class= "col-md-12">
-            <h2><center>Mars Hemispheres</center></h2>
+            <h2 class="text-center">Mars Hemispheres</h2>
         </div>
     </div>
 
-    <!-- add for loop to insert images and titles? -->
-    <div class= "col-md-6">
-        <div class= "thumbnail">
-            <img src= "{{}}", alt = "Hemisphere  Image">
-                <h3>{{}}</h3>
+    {% for item in mars.hem_urls %}
+        <div class="col-md-6">
+            <div class="thumbnail">
+                <img src= "{{item.img_url}}", alt = "Hemisphere  Image" class = "mw-100">
+                    <h3>{{item.title}}</h3>
+            </div>
         </div>
-    </div>   
-
-    <div class= "row">
-        <div class= "col-md-6">
-            <img src= "{{}}", alt = "Hemisphere 1 Image">
-            <h3>{{}}</h3>
-        </div>
-        <div class= "col-md-6">
-            <img src= "{{}}", alt = "Hemisphere  Image">
-            <h3>{{}}</h3>
-        </div>
-    </div>
-    
-    <div class= "row">
-        <div class= "col-md-6">
-            <img src= "{{}}", alt = "Hemisphere  Image">
-            <h3>{{}}</h3>
-        </div>
-        <div class= "col-md-6">
-            <div class= "thumbnail">
-                <img src= "{{}}", alt = "Hemisphere  Image">
-                    <h3>{{}}</h3>
-                </div>
-        </div>
-    </div>
-     <!--hemisphere formatting  -->
+            {% endfor %}
 
   </div>
 </div>
